@@ -1,0 +1,15 @@
+#!/bin/bash
+
+BUILD_DIR=$1
+
+cat << EOF
+---
+addons:
+	- shared-database:5mb
+config_vars:
+	PATH: /usr/local/bin:/usr/bin:/bin
+	JAVA_OPTS: -Xmx384m -Xss512k
+	DOUGH_ENV:production
+default_process_types:
+	web: java -jar bin/server-0.1-SNAPSHOT.jar
+EOF

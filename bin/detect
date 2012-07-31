@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -x $1/bin/server-0.1-SNAPSHOT.jar ]; then
+	echo "Dough.js"
+	exit 0
+fi
+
+exit 1
