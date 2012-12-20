@@ -15,5 +15,5 @@ config_vars:
 	DOUGH_ENV: production
 
 default_process_types:
-    web:	java -jar $BUILD_DIR/bin/server-0.1-SNAPSHOT.jar --base $BUILD_DIR --port \$PORT
+    web: java -jar $BUILD_DIR/bin/server-0.1-SNAPSHOT.jar --base $BUILD_DIR --port \$PORT
 EOF
