@@ -24,7 +24,9 @@ LOGGER_FLAGS="$LOGGER_FLAGS download_jdk"
 javaVersion="1.7"
 echo -n "-----> Installing OpenJDK ${javaVersion}..."
 install_java ${BUILD_DIR} ${javaVersion}
+echo -n "-----> install_java result: $?"
 jdk_overlay ${BUILD_DIR}
+echo -n "-----> jdk_overlay result: $?"
 echo "done"
 
 logger -p user.notice -t "slugc[$$]" "language_pack_java java_compile_end $LOGGER_FLAGS"
