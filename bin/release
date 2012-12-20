@@ -13,6 +13,7 @@ config_vars:
 	PATH: /app/.jdk/bin:/usr/local/bin:/usr/bin:/bin
 	JAVA_OPTS: -Xmx384m -Xss512k
 	DOUGH_ENV: production
+
 default_process_types:
-    web: java -jar $BUILD_DIR/bin/server-0.1-SNAPSHOT.jar --base $BUILD_DIR
+    web:	java \$JAVA_OPTS -jar $BUILD_DIR/bin/server-0.1-SNAPSHOT.jar --base $BUILD_DIR --port \$PORT
 EOF
