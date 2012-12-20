@@ -3,7 +3,7 @@
 
 BUILD_DIR=$1
 
-echo "      Starting release process with BUILD_DIR: $BUILD_DIR"
+echo "-----> Starting release process with BUILD_DIR: $BUILD_DIR"
 
 cat << EOF
 ---
