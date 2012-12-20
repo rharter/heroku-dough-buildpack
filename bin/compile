@@ -1,3 +1,30 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
 
-exit 0
+# fail fast
+set -e
+
+logger -p user.notice -t "slugc[$$]" "language_pack_java java_compile_start"
+
+BIN_DIR=$(cd $(dirname $0); pwd) #absolute path
+#parse args
+BUILD_DIR=$1
+CACHE_DIR=$2
+LOGGER_FLAGS=""
+
+curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack-common.tar.gz | tar xz
+. bin/java
+
+# create the cache dir if it doesn't exist
+mkdir -p $CACHE_DIR
+
+# install the JDK
+logger -p user.notice -t "slugc[$$]" "language_pack_java download_jdk"
+LOGGER_FLAGS="$LOGGER_FLAGS download_jdk"
+javaVersion="1.7"
+echo -n "-----> Installing OpenJDK ${javaVersion}..."
+install_java ${BUILD_DIR} ${javaVersion}
+jdk_overlay ${BUILD_DIR}
+echo "done"
+
+logger -p user.notice -t "slugc[$$]" "language_pack_java java_compile_end $LOGGER_FLAGS"
